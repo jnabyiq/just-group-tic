@@ -1,2 +1,1 @@
-# just-group-tic
-just-group-tic
+# tickety-magic
