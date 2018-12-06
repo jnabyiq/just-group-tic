@@ -63,7 +63,7 @@ if (message.content.toLowerCase().startsWith(prefix + `new`)) {
         c.send({ embed: embed });
     }).catch(console.error);
 }
-if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+if (message.content.toLowerCase().startsWith(prefix + `c`)) {
     if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`**You can't use the close command outside of a ticket channel.**`);
 
     message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`-confirm\`. This will time out in 10 seconds and be cancelled.`)
