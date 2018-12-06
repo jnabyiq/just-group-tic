@@ -55,7 +55,7 @@ if (message.content.toLowerCase().startsWith(prefix + `new`)) {
             SEND_MESSAGES: true,
             READ_MESSAGES: true
         });
-        message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
+        message.channel.send(`**:white_check_mark: Your ticket has been created, <#${c.name}>. **`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
         .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Team** will be here soon to help.`)
@@ -64,7 +64,7 @@ if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     }).catch(console.error);
 }
 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
-    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`**You can't use the close command outside of a ticket channel.**`);
 
     message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`-confirm\`. This will time out in 10 seconds and be cancelled.`)
     .then((m) => {
@@ -85,5 +85,71 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 }
 
 });
+
+var prefix = "$"
+client.on('message', function(message) {
+    const myID = "323160008411971585";
+    let args = message.content.split(" ").slice(1).join(" ");
+    if(message.content.startsWith(prefix + "setname")) {
+                if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setUsername(args);
+        message.channel.send('** Status Yuo**').then(msg => {
+           msg.delete(500);
+          message.delete(500);
+        });
+    } else if(message.content.startsWith(prefix + "st")) {
+                if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(args , 'https://twitch.tv/6xlez1');
+        message.channel.send('** Status Yuo**').then(msg => {
+           msg.delete(500);
+          message.delete(500);
+        });
+    } else if(message.content.startsWith(prefix + "ply")) {
+                        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(args);
+        message.channel.send('** Status Yuo**').then(msg => {
+           msg.delete(500);
+          message.delete(500);
+        });
+} else if(message.content.startsWith(prefix + "ls")) {
+                        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'LISTENING'});
+        message.channel.send('** Status Yuo**').then(msg => {
+           msg.delete(500);
+          message.delete(500);
+        });
+    } else if(message.content.startsWith(prefix + "wt")) {
+                        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'WATCHING'});
+        message.channel.send('** Status Yuo**').then(msg => {
+           msg.delete(500);
+          message.delete(500);
+        });
+    } else if(message.content.startsWith(prefix + "setavatar")) {
+                        if(message.author.id !== myID) return;
+        client.user.setAvatar(args);
+        message.channel.send('** Status Yuo**').then(msg => {
+                if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+           msg.delete(500);
+          message.delete(500);
+        });
+    }
+});
+
+client.on('ready', () => {
+   console.log(`----------------`);
+client.user.setGame(`#new | #help `,"http://twitch.tv/S-F")
+client.user.setStatus("dnd")
+});
+
+
+
+
+
 
 client.login(token);
